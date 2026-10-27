@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" id="html-root">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,62 +8,86 @@
 </head>
 <body>
 
+    <!-- زر القائمة (ثلاث نقاط) فوق اليمين -->
+    <div class="menu-container">
+        <button class="menu-btn" onclick="toggleMenu()">&#8942;</button>
+        <div id="dropdown-menu" class="dropdown-content">
+            <a href="#" onclick="selectSection(1); return false;" data-i18n="sec1">1. ملفات IPA</a>
+            <a href="#" onclick="selectSection(2); return false;" data-i18n="sec2">2. ملفات APK</a>
+            <a href="#" onclick="selectSection(3); return false;" data-i18n="sec3">3. حلول آيفون</a>
+            <a href="#" onclick="selectSection(4); return false;" data-i18n="sec4">4. حلول أندرويد</a>
+            <a href="#" onclick="selectSection(5); return false;" data-i18n="sec5">5. حلول كمبيوتر</a>
+            <a href="#" onclick="selectSection(6); return false;" data-i18n="sec6">6. أسأل AI</a>
+            <a href="#" onclick="selectSection(7); return false;" data-i18n="sec7">7. Melux</a>
+        </div>
+    </div>
+
+    <!-- قائمة تغيير اللغات فوق اليسار -->
+    <div class="lang-container">
+        <select id="lang-select" onchange="changeLanguage(this.value)">
+            <option value="ar">العربية</option>
+            <option value="en">English</option>
+            <option value="ru">Русский</option>
+            <option value="vi">Tiếng Việt</option>
+        </select>
+    </div>
+
     <!-- الواجهة الترحيبية -->
     <header class="hero">
         <div class="hero-content">
-            <h1>مرحباً في موقع Melux</h1>
-            <p>الموقع لمساعدتك في اي مشكلة قد تواجهك فقط اختار القسم المناسب لك وسوف تجد الذي تريده بإذن الله ❤️</p>
+            <h1 data-i18n="heroTitle">مرحباً في موقع Melux</h1>
+            <p data-i18n="heroDesc">الموقع لمساعدتك في اي مشكلة قد تواجهك فقط اختار القسم المناسب لك وسوف تجد الذي تريده بإذن الله ❤️</p>
         </div>
     </header>
 
     <!-- الأقسام الرئيسية -->
     <main class="container">
-        <h2 class="section-title">الأقسام الرئيسية</h2>
+        <h2 class="section-title" data-i18n="mainTitle">الأقسام الرئيسية</h2>
         
         <div class="grid">
             <div class="card" onclick="selectSection(1)">
-                <h3>1. ملفات IPA</h3>
-                <p>تطبيقات وأدوات الآيفون بصيغة IPA.</p>
+                <h3 data-i18n="sec1">1. ملفات IPA</h3>
+                <p data-i18n="desc1">تطبيقات وأدوات الآيفون بصيغة IPA.</p>
             </div>
             <div class="card" onclick="selectSection(2)">
-                <h3>2. ملفات APK</h3>
-                <p>تطبيقات وأدوات الأندرويد بصيغة APK.</p>
+                <h3 data-i18n="sec2">2. ملفات APK</h3>
+                <p data-i18n="desc2">تطبيقات وأدوات الأندرويد بصيغة APK.</p>
             </div>
             <div class="card" onclick="selectSection(3)">
-                <h3>3. حلول آيفون</h3>
-                <p>حلول مشاكل ونظام iOS للايفون.</p>
+                <h3 data-i18n="sec3">3. حلول آيفون</h3>
+                <p data-i18n="desc3">حلول مشاكل ونظام iOS للايفون.</p>
             </div>
             <div class="card" onclick="selectSection(4)">
-                <h3>4. حلول أندرويد</h3>
-                <p>حلول مشاكل ونظام Android.</p>
+                <h3 data-i18n="sec4">4. حلول أندرويد</h3>
+                <p data-i18n="desc4">حلول مشاكل ونظام Android.</p>
             </div>
             <div class="card" onclick="selectSection(5)">
-                <h3>5. حلول كمبيوتر</h3>
-                <p>حلول مشاكل أنظمة الكمبيوتر والبرمجيات.</p>
+                <h3 data-i18n="sec5">5. حلول كمبيوتر</h3>
+                <p data-i18n="desc5">حلول مشاكل أنظمة الكمبيوتر والبرمجيات.</p>
             </div>
             <div class="card" onclick="selectSection(6)">
-                <h3>6. أسأل AI</h3>
-                <p>تحدث مع المساعد الذكي الخاص بـ Melux.</p>
+                <h3 data-i18n="sec6">6. أسأل AI</h3>
+                <p data-i18n="desc6">تحدث مع المساعد الذكي الخاص بـ Melux.</p>
             </div>
             <div class="card" onclick="selectSection(7)">
-                <h3>7. Melux</h3>
-                <p>عن المنصة والرؤية والفريق.</p>
+                <h3 data-i18n="sec7">7. Melux</h3>
+                <p data-i18n="desc7">عن المنصة والرؤية والفريق.</p>
             </div>
         </div>
 
         <!-- قسم التفاعل مع الـ AI وحقوق Melux -->
         <section class="ai-box">
-            <h3>مساعد Melux الذكي</h3>
-            <div id="chat-output" class="chat-output">أهلاً بك! اسألني أي شيء (مثل: من هو صانع الذكاء الاصطناعي؟)</div>
+            <h3 data-i18n="aiTitle">مساعد Melux الذكي</h3>
+            <div id="chat-output" class="chat-output" data-i18n="aiDefault">أهلاً بك! اسألني أي شيء (مثل: من هو صانع الذكاء الاصطناعي؟)</div>
             <div class="chat-input-group">
                 <input type="text" id="user-input" placeholder="اكتب سؤالك هنا...">
-                <button onclick="askAI()">إرسال</button>
+                <button onclick="askAI()" data-i18n="sendBtn">إرسال</button>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>جميع الحقوق محفوظة © Melux 2026</p>
+        <p data-i18n="footer">جميع الحقوق محفوظة © Melux 2026</p>
     </footer>
 
     <script src="script.js"></script>
