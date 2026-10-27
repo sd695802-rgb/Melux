@@ -1,0 +1,54 @@
+name: Melux AI Developer Agent
+
+on:
+  issues:
+    types: [opened, edited]
+  workflow_dispatch:
+    inputs:
+      prompt:
+        description: 'اكتب فكرة التطبيق أو الموقع الذي تريد من الـ AI صنعه:'
+        required: true
+        default: 'صمم موقع لـ Melux'
+
+jobs:
+  run-ai:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          pip install google-generativeai
+
+      - name: Run Gemini AI Developer
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python -c '
+          import os
+          import google.generativeai as genai
+          
+          genai.configure(api_key=os.environ["GEMINI_API_KEY"])
+          model = genai.GenerativeModel("gemini-1.5-flash")
+          
+          prompt = "${{ github.event.inputs.prompt }}" or "موقع لـ Melux"
+          response = model.generate_content(f"أنت مطور ذكاء اصطناعي لعلامة Melux. اكتب لي كود HTML و CSS متكامل لفكرة المشروع التالي: {prompt}")
+          
+          with open("index.html", "w", encoding="utf-8") as f:
+              f.write(response.text)
+          print("تم إنشاء الملف بواسطة Gemini بنجاح!")
+          '
+
+      - name: Commit and Push changes
+        run: |
+          git config --global user.name "Melux AI Agent"
+          git config --global user.email "ai@melux.dev"
+          git add index.html
+          git commit -m "AI Developer: Update project files via Gemini" || exit 0
+          git push
