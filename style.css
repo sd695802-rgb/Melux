@@ -1,0 +1,151 @@
+:root {
+    --bg-color: #0f0f0f;
+    --card-bg: #1a1a1a;
+    --primary-red: #c92a2a;
+    --hover-red: #e03131;
+    --text-white: #f8f9fa;
+    --text-gray: #adb5bd;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Tahoma, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-white);
+    line-height: 1.6;
+}
+
+/* الواجهة الترحيبية */
+.hero {
+    background: linear-gradient(135deg, #821c1c, #4a0f0f);
+    padding: 60px 20px;
+    text-align: center;
+    border-bottom: 3px solid var(--primary-red);
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    color: #ffcccc;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* المحتوى والأقسام */
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--primary-red);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid #333;
+    padding: 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: center;
+}
+
+.card:hover {
+    border-color: var(--primary-red);
+    transform: translateY(-5px);
+    background-color: #222;
+}
+
+.card h3 {
+    color: var(--text-white);
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: var(--text-gray);
+    font-size: 0.95rem;
+}
+
+/* صندوق الـ AI */
+.ai-box {
+    background-color: var(--card-bg);
+    border: 1px solid var(--primary-red);
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.ai-box h3 {
+    margin-bottom: 15px;
+    color: var(--primary-red);
+}
+
+.chat-output {
+    background: #111;
+    padding: 15px;
+    border-radius: 6px;
+    min-height: 50px;
+    margin-bottom: 15px;
+    color: #ddd;
+    text-align: right;
+    border: 1px solid #333;
+}
+
+.chat-input-group {
+    display: flex;
+    gap: 10px;
+}
+
+.chat-input-group input {
+    flex: 1;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #444;
+    background: #222;
+    color: #fff;
+}
+
+.chat-input-group button {
+    background-color: var(--primary-red);
+    color: white;
+    border: none;
+    padding: 0 25px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.chat-input-group button:hover {
+    background-color: var(--hover-red);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #0a0a0a;
+    color: var(--text-gray);
+    font-size: 0.9rem;
+    border-top: 1px solid #222;
+}
